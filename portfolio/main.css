@@ -1,0 +1,24 @@
+.link {
+    font-size: 3em;
+}
+
+.intro p {
+    color: red;
+}
+
+
+ul {
+    display: flex;
+}
+
+@media screen and (max-width: 700px) {
+    ul {
+        /*background-color: red;*/
+        flex-direction: column;
+    }
+
+}
+
+ul li {
+    width: 400px;
+}
