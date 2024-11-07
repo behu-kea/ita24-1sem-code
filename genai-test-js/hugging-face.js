@@ -1,8 +1,10 @@
-async function queryFalcon() {
-    const response = await fetch("https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct/v1/chat/completions", {
+const API_KEY = "API_KEY_HERE"; // Replace with your actual API key
+
+function logSuggestion() {
+    fetch("https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct/v1/chat/completions", {
         method: "POST",
         headers: {
-            "Authorization": "Bearer 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",
+            "Authorization": "Bearer APIKEY",
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -10,24 +12,24 @@ async function queryFalcon() {
             messages: [
                 {
                     role: "user",
-                    content: "How do i add a new element to a javascript array?"
+                    content: "How do I add a new element to a JavaScript array?"
                 }
             ],
             max_tokens: 500,
             stream: false
         })
-    });
-
-    if (!response.ok) {
-        console.log(111)
-        throw new Error(`Error: ${response.statusText}`);
-    }
-
-    const result = await response.json();
-    console.log(result)
-    console.log(result.choices[0].message.content);
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.log(111);
+                throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(suggestionData => {
+            console.log(suggestionData);
+        })
+        .catch(error => console.error(error));
 }
 
-// Call the function
-queryFalcon().catch(console.error);
-
+//logSuggestion();
