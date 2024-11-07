@@ -4,7 +4,7 @@ function logSuggestion() {
     fetch("https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct/v1/chat/completions", {
         method: "POST",
         headers: {
-            "Authorization": "Bearer APIKEY",
+            "Authorization": `Bearer ${API_KEY}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
