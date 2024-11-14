@@ -2,11 +2,13 @@
 const express = require('express');
 
 const app = express();
+//app.disable('etag');
 const PORT = process.env.PORT || 3001;
 
 // Route with short-term cache (10 seconds)
 app.get('/cache-short', (req, res) => {
-    res.set('Cache-Control', 'public, max-age=10'); // 10 seconds
+    console.log(1);
+    res.set('Cache-Control', 'public, max-age=10');
     res.json({ message: 'This response is cached for 10 seconds', timestamp: new Date() });
 });
 
